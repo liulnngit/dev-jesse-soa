@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:jack="http://www.dongnaoedu.com/schema/soa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	   http://www.dongnaoedu.com/schema/soa 
+	   http://www.dongnaoedu.com/schema/soa.xsd"
+       default-lazy-init="true">
+
+ 	<jack:registry  protocol="redis" address="127.0.0.1:6379"></jack:registry>
+ 	<jack:protocol  name="netty" port="27017" host="127.0.0.1"></jack:protocol>
+	
+	<bean id="demoService" class="com.alibaba.dubbo.demo.provider.DemoServiceImpl" />
+	<jack:service interface="com.alibaba.dubbo.demo.DemoService" ref="demoService"/>
+	
+</beans>  
